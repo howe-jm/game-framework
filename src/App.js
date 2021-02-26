@@ -9,6 +9,8 @@ class App extends React.Component {
     saveName: '',
   };
 
+  // React DOM methods
+
   componentDidMount() {
     for (const property in localStorage) {
       if (property.startsWith('testsaves123 -')) this.setState({ saves: [...this.state.saves, property] });
@@ -24,20 +26,24 @@ class App extends React.Component {
     console.log(this.state.saves);
   }
 
+  // Demo list methods
+
   handleChange = (event, value) => {
     event.preventDefault();
     this.setState({ fieldValue: value });
-  };
-
-  handleSaveNameChange = (event, value) => {
-    event.preventDefault();
-    this.setState({ saveName: value });
   };
 
   handleSubmit = (event, value) => {
     event.preventDefault();
     this.setState({ postedStuff: [...this.state.postedStuff, value] });
     this.setState({ fieldValue: '' });
+  };
+
+  // Save State methods
+
+  handleSaveNameChange = (event, value) => {
+    event.preventDefault();
+    this.setState({ saveName: value });
   };
 
   handleSaveState = (event) => {
@@ -54,17 +60,20 @@ class App extends React.Component {
     this.setState({ saveName: '' });
   };
 
-  handleClearStorage = (event) => {
-    event.preventDefault();
-    localStorage.clear();
-  };
-
   handleDeleteSave = (event, value) => {
     event.preventDefault();
     let saves = this.state.saves.filter((save) => save !== value);
     localStorage.removeItem(value);
     this.setState({ saves });
   };
+
+  handleClearStorage = (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    this.setState({ saves: [] });
+  };
+
+  // Render method
 
   render() {
     return (
@@ -99,6 +108,7 @@ class App extends React.Component {
                 <button onClick={(event) => this.handleDeleteSave(event, stuff)}>Delete Save</button>
               </div>
             ))}
+          <button onClick={(event) => this.handleClearStorage(event)}>Clear Storage</button>
         </div>
       </div>
     );
