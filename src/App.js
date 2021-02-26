@@ -23,7 +23,6 @@ class App extends React.Component {
       if (property.startsWith('testsaves123 -')) saves.push(property);
     }
     if (JSON.stringify(saves) !== JSON.stringify(this.state.saves)) this.setState({ saves });
-    console.log(this.state.saves);
   }
 
   // Demo list methods
