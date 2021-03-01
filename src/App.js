@@ -15,7 +15,7 @@ class App extends React.Component {
     for (const property in localStorage) {
       if (property.startsWith('testsaves123 -')) this.setState({ saves: [...this.state.saves, property] });
     }
-  }
+  };
 
   componentDidUpdate() {
     let saves = [];
@@ -23,7 +23,7 @@ class App extends React.Component {
       if (property.startsWith('testsaves123 -')) saves.push(property);
     }
     if (JSON.stringify(saves) !== JSON.stringify(this.state.saves)) this.setState({ saves });
-  }
+  };
 
   // Demo list methods
 
