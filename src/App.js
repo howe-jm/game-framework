@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import Count from './Count/Count';
 
 const App = () => {
   return (
     <div>
-      <p>Stuff will go here.</p>
+      <Count />
     </div>
   );
 };
